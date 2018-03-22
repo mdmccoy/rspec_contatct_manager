@@ -20,4 +20,8 @@ RSpec.describe Person, type: :model do
     person.last_name = nil
     expect(person).not_to be_valid
   end
+
+  it "has many phone numbers" do
+    expect(person.phone_numbers).to eq([])
+  end
 end
