@@ -8,7 +8,7 @@ RSpec.describe "phone_numbers/new", type: :view do
   before(:each) do
     assign(:phone_number, PhoneNumber.new(
       :number => "MyString",
-      :person => person
+      :person_id => person.id
     ))
   end
 

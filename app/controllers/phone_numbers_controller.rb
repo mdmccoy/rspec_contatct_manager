@@ -14,7 +14,8 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers/new
   def new
-    @phone_number = PhoneNumber.new
+    # @phone_number = PhoneNumber.new(person_id: params[:person_id])
+    @phone_number = PhoneNumber.new(person_id: params[:person_id])
   end
 
   # GET /phone_numbers/1/edit
@@ -29,7 +30,7 @@ class PhoneNumbersController < ApplicationController
 
     respond_to do |format|
       if @phone_number.save
-        format.html { redirect_to @phone_number, notice: 'Phone number was successfully created.' }
+        format.html { redirect_to @phone_number.person, notice: 'Phone number was successfully created.' }
         format.json { render :show, status: :created, location: @phone_number }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class PhoneNumbersController < ApplicationController
   def update
     respond_to do |format|
       if @phone_number.update(phone_number_params)
-        format.html { redirect_to @phone_number, notice: 'Phone number was successfully updated.' }
+        format.html { redirect_to @phone_number.person, notice: 'Phone number was successfully updated.' }
         format.json { render :show, status: :ok, location: @phone_number }
       else
         format.html { render :edit }

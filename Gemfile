@@ -50,7 +50,9 @@ group :development do
 
   gem 'rspec-rails'
 
-   gem 'guard-rspec', require: false
+  gem 'guard-rspec', require: false
+
+  gem 'capybara'
 end
 
 group :production do
