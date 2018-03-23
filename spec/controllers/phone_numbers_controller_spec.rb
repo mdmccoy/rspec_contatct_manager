@@ -28,12 +28,26 @@ RSpec.describe PhoneNumbersController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
+  let(:person) do
+    Person.create(first_name:"Alice", last_name:"Smith")
+  end
+
+  let(:person2) do
+    Person.create(first_name:"Alice2", last_name:"Smith2")
+  end
+
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      number: "1112223333",
+      person_id: person.id
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      number:nil,
+      person:nil
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +111,18 @@ RSpec.describe PhoneNumbersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          number: "1112224444",
+          person_id: person2.id
+        }
       }
 
       it "updates the requested phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, params: {id: phone_number.to_param, phone_number: new_attributes}, session: valid_session
         phone_number.reload
-        skip("Add assertions for updated state")
+        expect(phone_number.number).to eq("1112224444")
+        expect(phone_number.person_id).to eq(2)
       end
 
       it "redirects to the phone_number" do
