@@ -145,10 +145,10 @@ RSpec.describe PhoneNumbersController, type: :controller do
       }.to change(PhoneNumber, :count).by(-1)
     end
 
-    it "redirects to the phone_numbers list" do
+    it "redirects to the the person" do
       phone_number = PhoneNumber.create! valid_attributes
       delete :destroy, params: {id: phone_number.to_param}, session: valid_session
-      expect(response).to redirect_to(phone_numbers_url)
+      expect(response).to redirect_to(person)
     end
   end
 
