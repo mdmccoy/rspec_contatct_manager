@@ -28,12 +28,20 @@ RSpec.describe EmailAddressesController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # EmailAddress. As you add validations to EmailAddress, be sure to
   # adjust the attributes here as well.
+  let(:person){Person.create(first_name:"Alice",last_name:"Smith")}
+
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      address:"alice@smith.com",
+      person_id:person.id
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      address:nil,
+      person_id:nil
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -96,15 +104,20 @@ RSpec.describe EmailAddressesController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
+
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          address: "alice2@smith2.com",
+          person_id: person.id
+        }
       }
 
       it "updates the requested email_address" do
         email_address = EmailAddress.create! valid_attributes
         put :update, params: {id: email_address.to_param, email_address: new_attributes}, session: valid_session
         email_address.reload
-        skip("Add assertions for updated state")
+
+        expect(email_address.address).to eq("alice2@smith2.com")
       end
 
       it "redirects to the email_address" do
