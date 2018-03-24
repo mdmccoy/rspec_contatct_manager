@@ -18,6 +18,8 @@ describe 'the person view', type: :feature do
 
     it 'has a link to add a new phone number' do
       expect(page).to have_link('Add phone number', href: new_phone_number_path(person_id: person.id))
+      click_link('Add phone number')
+      # expect(current_path).to eq(new_phone_number_path(person_id: person.id))
     end
 
     it 'adds a new phone number' do
@@ -75,10 +77,46 @@ describe 'the person view', type: :feature do
     end
 
     it 'has a create email link' do
-      expect(page).to have_link('Add email address', id:'new_email_address')
-      click_link('Add email address')
-      expect(current_path).to eq(new_email_address_path)
+      # expect(current_path).to eq(person_path(person))
+      expect(page).to have_link('Add email address', id:'new_email_address', href:new_email_address_path(person_id: person.id))
+      # page.click_link('Add email address')
+      # expect(current_path).to eq(new_email_address_path(person_id: person.id))
+    end
 
+    it 'creates a new email address' do
+      click_link('Add email address', id: 'new_email_address')
+      page.fill_in('Address', with: 'john@doe.com')
+      page.click_button('Create Email address')
+      expect(current_path).to eq(person_path(person))
+      expect(page).to have_content('john@doe.com')
+    end
+
+    it 'has a link to edit email addresses' do
+      person.email_addresses.each do |email|
+        expect(page).to have_link('edit',href: edit_email_address_path(email))
+      end
+    end
+
+    it 'edits email addresses' do
+      email_address = person.email_addresses.first
+      click_link('edit',href:edit_email_address_path(email_address))
+      page.fill_in('Address', with: "update@update.com")
+      page.click_button('Update Email address')
+      expect(current_path).to eq(person_path(person))
+      expect(page).to have_content('update@update.com')
+    end
+
+    it 'has a link to delte email addresses' do
+      person.email_addresses.each do |email|
+        expect(page).to have_link('delete',href: email_address_path(email))
+      end
+    end
+
+    it 'deletes email addresses' do
+      email_address = person.email_addresses.first
+      click_link('delete', href: email_address_path(email_address))
+      expect(current_path).to eq(person_path(person))
+      expect(page).to_not have_link('delete', href: email_address_path(email_address))
     end
   end
 end

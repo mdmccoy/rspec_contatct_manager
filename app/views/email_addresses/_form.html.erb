@@ -16,9 +16,8 @@
     <%= form.text_field :address, id: :email_address_address %>
   </div>
 
-  <div class="field">
-    <%= form.label :person_id %>
-    <%= form.text_field :person_id, id: :email_address_person_id %>
+  <div class="field">    
+    <%= form.hidden_field :person_id, id: :email_address_person_id %>
   </div>
 
   <div class="actions">

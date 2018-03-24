@@ -90,7 +90,7 @@ RSpec.describe PhoneNumbersController, type: :controller do
         }.to change(PhoneNumber, :count).by(1)
       end
 
-      it "redirects to the created phone_number" do
+      it "redirects to the persons show page" do
         post :create, params: {phone_number: valid_attributes}, session: valid_session
         expect(response).to redirect_to(PhoneNumber.last.person)
       end
@@ -121,7 +121,7 @@ RSpec.describe PhoneNumbersController, type: :controller do
         expect(phone_number.person_id).to eq(2)
       end
 
-      it "redirects to the phone_number" do
+      it "redirects to the person" do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, params: {id: phone_number.to_param, phone_number: valid_attributes}, session: valid_session
         expect(response).to redirect_to(person)
