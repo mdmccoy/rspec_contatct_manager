@@ -11,4 +11,8 @@ RSpec.describe Company, type: :model do
     company.name = nil
     expect(company).to_not be_valid
   end
+
+  it "has many phone numbers" do
+    expect(company.phone_numbers).to eq([])
+  end
 end

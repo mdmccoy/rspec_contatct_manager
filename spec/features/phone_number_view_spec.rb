@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'the phone_number view' do
   let(:person) { Person.create!(first_name: 'John', last_name: 'Doe') }
-  let(:phone_number) { PhoneNumber.create!(number:'1112223333', person_id:person.id)}
+  let(:phone_number) { PhoneNumber.create!(number:'1112223333', contact_id:person.id, contact_type: person.class)}
 
   before(:each) { visit phone_number_path(phone_number)}
 

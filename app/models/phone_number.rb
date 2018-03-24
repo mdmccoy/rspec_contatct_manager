@@ -1,4 +1,5 @@
 class PhoneNumber < ApplicationRecord
-  belongs_to :person
-  validates :number, presence: true
+  validates :contact_id,:number, presence: true
+
+  belongs_to :contact, polymorphic: true
 end
