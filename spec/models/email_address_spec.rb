@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe EmailAddress, type: :model do
   let(:person){Person.create(first_name: "Alice", last_name:"Smith")}
-  let(:email_address) {EmailAddress.new(person:person,address: "alice@smith.com")}
+  let(:email_address) {EmailAddress.new(contact_id:person.id,contact_type:person.class, address: "alice@smith.com")}
 
   it "is valid" do
     expect(email_address).to be_valid
@@ -14,8 +14,14 @@ RSpec.describe EmailAddress, type: :model do
     expect(email_address).to_not be_valid
   end
 
-  it "is invalid without a person" do
-    email_address.person = nil
+  it "is invalid without a contact_id" do
+    email_address.contact_id = nil
+
+    expect(email_address).to_not be_valid
+  end
+
+  it "is invalid without a contact type" do
+    email_address.contact_type = nil
 
     expect(email_address).to_not be_valid
   end

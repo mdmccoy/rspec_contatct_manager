@@ -33,14 +33,16 @@ RSpec.describe EmailAddressesController, type: :controller do
   let(:valid_attributes) {
     {
       address:"alice@smith.com",
-      person_id:person.id
+      contact_id:person.id,
+      contact_type:person.class
     }
   }
 
   let(:invalid_attributes) {
     {
       address:nil,
-      person_id:nil
+      contact_id:nil,
+      contact_type:nil
     }
   }
 
@@ -55,6 +57,7 @@ RSpec.describe EmailAddressesController, type: :controller do
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
+
   end
 
   describe "GET #show" do

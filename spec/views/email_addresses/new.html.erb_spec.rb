@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "email_addresses/new", type: :view do
+  let(:contact){ Company.create(name:"Test Co.")}
   before(:each) do
     assign(:email_address, EmailAddress.new(
       :address => "MyString",
-      :person => nil
+      :contact => contact
     ))
   end
 
@@ -15,7 +16,7 @@ RSpec.describe "email_addresses/new", type: :view do
 
       assert_select "input[name=?]", "email_address[address]"
 
-      assert_select "input[name=?]", "email_address[person_id]"
+      assert_select "input[name=?]", "email_address[contact_id]"
     end
   end
 end

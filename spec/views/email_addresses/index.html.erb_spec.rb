@@ -7,11 +7,11 @@ RSpec.describe "email_addresses/index", type: :view do
     assign(:email_addresses, [
       EmailAddress.create!(
         :address => "Address",
-        :person => person
+        :contact => person
       ),
       EmailAddress.create!(
         :address => "Address",
-        :person => person
+        :contact => person
       )
     ])
   end

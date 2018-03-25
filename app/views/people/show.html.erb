@@ -34,6 +34,6 @@
 </ul>
 
 <%= link_to 'Add phone number',new_phone_number_path(contact_id: @person.id, contact_type: @person.class) %> |
-<%= link_to 'Add email address',new_email_address_path(person_id: @person.id), id: 'new_email_address'%>
+<%= link_to 'Add email address',new_email_address_path(contact_id: @person.id, contact_type: @person.class), id: 'new_email_address'%>
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
