@@ -62,4 +62,58 @@ describe 'the company view', type: :feature do
       expect(page).to_not have_link('delete', href:phone_number_path(phone))
     end
   end
+
+  describe 'has email addresses' do
+    before(:each) do
+      company.email_addresses.create(address: 'alice@smith.com')
+      company.email_addresses.create(address: 'alice2@smith2.com')
+      visit company_path(company)
+    end
+
+    it "shows the email address in an li" do
+      company.email_addresses.each do |email|
+        expect(page).to have_selector('li', text: email.address)
+      end
+    end
+
+    it 'has a create email link' do
+      expect(page).to have_link('Add email address', id:'new_email_address', href:new_email_address_path(contact_id: company.id, contact_type: company.class))
+    end
+
+    it 'creates a new email address' do
+      click_link('Add email address', id: 'new_email_address')
+      page.fill_in('Address', with: 'john@doe.com')
+      page.click_button('Create Email address')
+      expect(current_path).to eq(company_path(company))
+      expect(page).to have_content('john@doe.com')
+    end
+
+    it 'has a link to edit email addresses' do
+      company.email_addresses.each do |email|
+        expect(page).to have_link('edit',href: edit_email_address_path(email))
+      end
+    end
+
+    it 'edits email addresses' do
+      email_address = company.email_addresses.first
+      click_link('edit',href:edit_email_address_path(email_address))
+      page.fill_in('Address', with: "update@update.com")
+      page.click_button('Update Email address')
+      expect(current_path).to eq(company_path(company))
+      expect(page).to have_content('update@update.com')
+    end
+
+    it 'has a link to delte email addresses' do
+      company.email_addresses.each do |email|
+        expect(page).to have_link('delete',href: email_address_path(email))
+      end
+    end
+
+    it 'deletes email addresses' do
+      email_address = company.email_addresses.first
+      click_link('delete', href: email_address_path(email_address))
+      expect(current_path).to eq(company_path(company))
+      expect(page).to_not have_link('delete', href: email_address_path(email_address))
+    end
+  end
 end
