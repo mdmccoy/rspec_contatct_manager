@@ -53,6 +53,8 @@ group :development do
   gem 'guard-rspec', require: false
 
   gem 'capybara'
+
+  gem 'simplecov', require: false
 end
 
 group :production do
