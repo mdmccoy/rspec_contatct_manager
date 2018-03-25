@@ -1,0 +1,9 @@
+<%= link_to 'Add phone number',new_phone_number_path(contact_id: contact.id, contact_type: contact.class) %> |
+<%= link_to 'Add email address',new_email_address_path(contact_id: contact.id, contact_type: contact.class), id: 'new_email_address'%>
+<% if contact.class == 'Person' %>
+  <%= link_to 'Edit', edit_person_path(contact) %> |
+  <%= link_to 'Back', people_path %>
+<% elsif contact.class == 'Company' %>
+  <%= link_to 'Edit', edit_company_path(contact) %> |
+  <%= link_to 'Back', companies_path %>
+<% end %>

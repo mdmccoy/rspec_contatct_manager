@@ -1,0 +1,11 @@
+<p>
+  <strong>Phone Numbers:</strong>
+</p>
+<% phone_numbers.each do |phone| %>
+<p>
+  <strong>Number:</strong>
+  <%= phone.number %>
+  <%= link_to 'edit', edit_phone_number_path(phone) %> |
+  <%= link_to 'delete', phone_number_path(phone), :method => "delete" %>
+</p>
+<% end %>
