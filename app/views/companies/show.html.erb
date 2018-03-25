@@ -1,12 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="company">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+  <h2><%= @company.name %></h2>
 
-<%= render 'phone_numbers/phone_numbers', phone_numbers: @company.phone_numbers %>
+  <%= render 'phone_numbers/phone_numbers', phone_numbers: @company.phone_numbers %>
 
-<%= render 'email_addresses/email_addresses', email_addresses: @company.email_addresses %>
+  <%= render 'email_addresses/email_addresses', email_addresses: @company.email_addresses %>
 
-<%= render 'layouts/footer', contact: @company %>
+  <%= render 'layouts/footer', contact: @company %>
+</div>

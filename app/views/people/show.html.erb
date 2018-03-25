@@ -1,14 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @person.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @person.last_name %>
-</p>
+<h2><%= @person.name %></h2>
 
 <%= render 'phone_numbers/phone_numbers', phone_numbers: @person.phone_numbers %>
 

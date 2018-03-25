@@ -18,13 +18,15 @@
           <li>
             <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
           </li>
-          <li>
-            <% if contact.class == 'Person' %>
+          <% if contact.class == 'Person' %>
+            <li>
               <%= link_to 'Edit', edit_person_path(contact) %>
-            <% elsif contact.class == 'Company' %>
+            </li>
+          <% else %>
+            <li>
               <%= link_to 'Edit', edit_company_path(contact) %>
-            <% end %>
-          </li>
+            </li>
+          <% end %>
         </ul>
       </td>
     </tr>

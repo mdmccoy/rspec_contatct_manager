@@ -460,7 +460,7 @@
         1,
         null,
         1,
-        27,
+        28,
         null,
         null,
         null,
@@ -628,7 +628,7 @@
         null,
         null,
         1,
-        3,
+        5,
         null,
         null,
         null,
@@ -899,7 +899,7 @@
         1,
         null,
         1,
-        27,
+        28,
         null,
         null,
         null,
@@ -1228,6 +1228,26 @@
         null,
         null
       ],
+      "/home/matt/github/rspec_contatct_manager/spec/features/email_address_new_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/home/matt/github/rspec_contatct_manager/spec/features/person_view_spec.rb": [
         1,
         null,
@@ -1475,7 +1495,7 @@
         1,
         null,
         1,
-        2,
+        24,
         null,
         null
       ],
@@ -1790,23 +1810,23 @@
       "/home/matt/github/rspec_contatct_manager/spec/views/email_addresses/new.html.erb_spec.rb": [
         1,
         null,
-        1,
-        2,
-        1,
-        1,
         null,
         null,
         null,
         null,
         null,
-        1,
-        1,
         null,
-        1,
         null,
-        1,
         null,
-        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null
@@ -1952,6 +1972,6 @@
         null
       ]
     },
-    "timestamp": 1522002494
+    "timestamp": 1522014374
   }
 }

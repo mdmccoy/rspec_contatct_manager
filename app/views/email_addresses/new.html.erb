@@ -2,4 +2,8 @@
 
 <%= render 'form', email_address: @email_address %>
 
-<%= link_to 'Back', email_addresses_path %>
+<% if params[:contact_type] == 'Person'%>
+<%= link_to 'Back', person_path(params[:contact_id]) %>
+<% elsif %>
+<%= link_to 'Back', company_path(params[:contact_id]) %>
+<% end %>
