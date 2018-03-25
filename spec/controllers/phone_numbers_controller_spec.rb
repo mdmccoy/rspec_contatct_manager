@@ -53,22 +53,6 @@ RSpec.describe PhoneNumbersController, type: :controller do
   # PhoneNumbersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
-      phone_number = PhoneNumber.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #show" do
-    it "returns a success response" do
-      phone_number = PhoneNumber.create! valid_attributes
-      get :show, params: {id: phone_number.to_param}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
   describe "GET #new" do
     it "returns a success response" do
       get :new, params: {}, session: valid_session
