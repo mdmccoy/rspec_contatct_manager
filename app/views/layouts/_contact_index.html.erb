@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% contacts.each do |contact| %>
+    <tr>
+      <td><%= contact.name %></td>
+      <td>
+        <ul class="actions">
+          <li>
+            <%= link_to 'Show', contact %>
+          </li>
+          <li>
+            <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </li>
+          <li>
+            <% if contact.class == 'Person' %>
+              <%= link_to 'Edit', edit_person_path(contact) %>
+            <% elsif contact.class == 'Company' %>
+              <%= link_to 'Edit', edit_company_path(contact) %>
+            <% end %>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

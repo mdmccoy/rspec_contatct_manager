@@ -1473,6 +1473,10 @@
         1,
         null,
         1,
+        null,
+        1,
+        2,
+        null,
         null
       ],
       "/home/matt/github/rspec_contatct_manager/spec/models/phone_number_spec.rb": [
@@ -1850,7 +1854,6 @@
         1,
         1,
         1,
-        1,
         null,
         null
       ],
@@ -1949,6 +1952,6 @@
         null
       ]
     },
-    "timestamp": 1522001426
+    "timestamp": 1522002494
   }
 }
