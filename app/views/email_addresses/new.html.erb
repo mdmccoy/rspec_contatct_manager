@@ -1,9 +1,10 @@
-<h1> <%= "New Email Address for #{@email_address.contact.name}" %>  </h1>
+<h1> <%= "New Email Address for #{@email_address.contact}" %>  </h1>
 
 <%= render 'form', email_address: @email_address %>
 
-<% if params[:contact_type] == 'Person'%>
-<%= link_to 'Back', person_path(params[:contact_id]) %>
+<% if @email_address.contact_type == 'Person'%>
+<%= link_to 'Back', person_path(@email_address.contact) %>
 <% elsif %>
-<%= link_to 'Back', company_path(params[:contact_id]) %>
+<%= link_to 'Back', company_path(@email_address.contact
+  ) %>
 <% end %>

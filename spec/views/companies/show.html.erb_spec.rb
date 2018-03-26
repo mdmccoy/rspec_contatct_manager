@@ -11,4 +11,10 @@ RSpec.describe "companies/show", type: :view do
     render
     expect(rendered).to match(/Name/)
   end
+
+  it "renders company name in the header" do
+    render
+
+    assert_select("h1", text: "#{@company.name}")
+  end
 end

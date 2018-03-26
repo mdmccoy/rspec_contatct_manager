@@ -18,4 +18,10 @@ RSpec.describe "people/edit", type: :view do
       assert_select "input[name=?]", "person[last_name]"
     end
   end
+
+  it "displays the persons name in the header" do
+    render
+
+    assert_select("h1", "Editing #{@person.last_name}, #{@person.first_name}")
+  end
 end

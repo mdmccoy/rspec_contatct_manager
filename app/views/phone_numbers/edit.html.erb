@@ -1,10 +1,10 @@
-<h1> <%= "Editing phone number for #{@phone_number.contact.name}" %> </h1>
+<h1> <%= "Editing phone number for #{@phone_number.contact}" %> </h1>
 
 <%= render 'form', phone_number: @phone_number %>
 
 <%= link_to 'Show', @phone_number %> |
 <% if @phone_number.contact_type == 'Person'%>
-<%= link_to 'Back', person_path(@phone_number.contact_id) %>
+<%= link_to 'Back', person_path(@phone_number.contact) %>
 <% elsif %>
-<%= link_to 'Back', company_path(@phone_number.contact_id) %>
+<%= link_to 'Back', company_path(@phone_number.contact) %>
 <% end %>

@@ -15,4 +15,10 @@ RSpec.describe "companies/edit", type: :view do
       assert_select "input[name=?]", "company[name]"
     end
   end
+
+  it "renders the company name in the header" do
+    render
+
+    assert_select("h1", text: "Editing MyString")
+  end
 end
