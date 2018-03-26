@@ -26,4 +26,12 @@ RSpec.describe Person, type: :model do
     person.email_addresses.build(address:'alice@smith.com')
     expect(person.email_addresses.map(&:address)).to eq(['alice@smith.com'])
   end
+
+  it 'has a name method' do
+    expect(person.name).to eq("Alice Smith")
+  end
+
+  it "uses to_s to convert to string" do
+    expect(person.to_s).to eq("Smith, Alice")
+  end
 end
